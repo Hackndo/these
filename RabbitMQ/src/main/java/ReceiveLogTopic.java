@@ -9,7 +9,6 @@ import java.util.concurrent.TimeoutException;
 public class ReceiveLogTopic {
 
     private static final String EXCHANGE_NAME = "topic_logs";
-    private final static int sleepTime = 1000;
 
     public static void main(String[] argv)
             throws IOException,
