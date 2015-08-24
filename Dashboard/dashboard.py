@@ -11,20 +11,18 @@ minute_review = 1
 def mongo_get_user():
     current_time = int(time.time()*1000)
     # We get the last minute_review of users
-    resp = r.zrangebyscore("storm", current_time - minute_review*60*1000, current_time)
+    resp = r.zrangebyscore("storm", current_time - minute_review*60*1000, current_time, withscores=True)
 
     # We delete messages older than minute_review
     r.zremrangebyscore("storm", 0, current_time - minute_review*60*1000 - 1)
 
     # Response building
     resp = {'current_time': str(current_time), 
-        'current_time_minus_5': str(current_time - minute_review*60*1000), 
-        'response': len(resp)
+        'current_time_minus_' + str(minute_review): str(current_time - minute_review*60*1000), 
+        'response': len(resp),
+        'details': resp
     }
-    response = make_response(json.dumps(resp))
-    response.mimetype = "application/json"
-    response.status_code = 200
-    return response
+    return render_template('dashboard.html', response=resp)
 
 
 if __name__ == '__main__':
