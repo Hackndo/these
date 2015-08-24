@@ -3,6 +3,8 @@
 # 3. Start Kafka Brokers
 # 4. Start Tomcat (with WT1 inside)
 # 5. Start Storm
+# 6. Start dashboard.py
+# 7. Start dashboard.php
 
 #########################################################
 #                       LAUNCH                          #
