@@ -1,0 +1,42 @@
+# Redis
+~/Documents/Redis/redis-3.0.3/src/redis-server &
+
+# Zookeeper
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/zookeeper-server-start.sh config/zookeeper.properties &
+
+# Brokers 1 2 3
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-server-start.sh config/server-1.properties &
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-server-start.sh config/server-2.properties &
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-server-start.sh config/server-3.properties &
+
+# Create topic
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 2 --topic my-new-topic
+
+# List topic
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --zookeeper localhost:2181 --list
+
+# Describes topic
+~/Documents/Kafka/kafka_2.10-0.8.2.1/bin/kafka-topics.sh --zookeeper localhost:2181 --topic storm-topic --describe
+
+# Start tomcat
+~/Documents/Tomcat/apache-tomcat-7.0.63/./bin/catalina.sh start
+
+# WT1 logs in tomcat
+tail -f ~/Documents/Tomcat/apache-tomcat-7.0.63/logs/wt1_log
+
+# Consume logs
+~/Documents/Kafka/kafka_2.10-0.8.2.1/./bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic storm-topic --from-beginning
+
+# Update & launch storm topology
+cd ~/Documents/StormKafka/kafka-spout && mvn clean && mvn package
+cd ~/Documents/StormKafka/kafka-spout && storm jar target/kafka-spout-0.3-SNAPSHOT-jar-with-dependencies.jar com.hackndo.storm.KafkaTopology
+
+# Redis view
+~/Documents/Redis/redis-3.0.3/src/redis-cli
+# FLUSHALL
+# ZRANGEBYSCORE storm -inf +inf
+# KEYS *
+# GET <key>
+
+# Update WT1
+~/Documents/WT1/wt1/mv.sh

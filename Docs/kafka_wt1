@@ -1,0 +1,11 @@
+Lancer un broker Kafka
+romain@dataiku:~/Documents/Kafka/kafka_2.10-0.8.2.1 $ ./bin/kafka-server-start.sh config/server.properties 
+
+Lancer Tomcat
+romain@dataiku:~/Documents/Tomcat/apache-tomcat-7.0.63 $ ./bin/catalina.sh start
+
+Regarder les log de l'applet
+romain@dataiku:~/Documents/Tomcat/apache-tomcat-7.0.63 $ tail -f logs/wt1_log
+
+Consumer les logs kafka
+romain@dataiku:~/Documents/Kafka/kafka_2.10-0.8.2.1 $ ./bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic testTopic --from-beginning
