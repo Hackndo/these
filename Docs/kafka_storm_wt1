@@ -4,7 +4,14 @@
 # 4. Start Tomcat (with WT1 inside)
 # 5. Start Storm
 # 6. Start dashboard.py
-# 7. Start dashboard.php
+# http://localhost:5000/users
+
+#
+# Nombre users
+# Nombre de users par composant du studio
+# Where are they ?
+#     -> Géographique (Une facon de le faire, cest essayer de faire un bolt qui exectue un script shaker)
+#     -> In the studio (on maintient pour chaque user son dernier etat. 10 users on utilisé le shaker dans la dernier heure. Mais 3 sont actuellement sur le shaker. Donc quand un user change d'état, il faut le noter.)
 
 #########################################################
 #                       LAUNCH                          #

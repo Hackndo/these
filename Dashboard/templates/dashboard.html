@@ -1,15 +1,18 @@
 <html>
     <head>
     <meta http-equiv="refresh" content="3;URL='users'">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     </head>
-    <body>
+    <body style="background-color: #EEE">
 
-    <h1>There 
-    {% if response.response > 1 %}
-        are {{ response.response }} users
-    {% else %}
-        is {{ response.response }} user
-    {% endif %}
-     !
- </body>
+        <h1 style="text-align: center; font-size: 80px; margin-top: 300px; color: #333; font-family: 'Lato', sans-serif;"> 
+            {{ response.response }}
+        {% if response.response > 1 %}
+            users
+        {% else %}
+            user
+        {% endif %}</h1>
+    </body>
 </html>
+
+
