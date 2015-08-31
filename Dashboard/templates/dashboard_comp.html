@@ -1,0 +1,18 @@
+<html>
+    <head>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body style="background-color: #EEE">
+
+        <p style="text-align: center; font-size: 80px; margin-top: 300px; color: #333; font-family: 'Lato', sans-serif;"> 
+        <b>Num users/module (10 min)</b>
+        </p>
+        	<table style="margin:auto; font-size: 30px; color:#222; font-family: 'Lato', sans-serif;">
+        {% for module, num in response.modules.iteritems() %}
+        	<tr><td><b>{{ module }}</b></td><td>{{ num }}</td></tr>
+        {% endfor %}
+    </table>
+    </body>
+</html>
+
+
