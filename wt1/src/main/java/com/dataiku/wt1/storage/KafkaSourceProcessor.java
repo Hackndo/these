@@ -145,7 +145,7 @@ public class KafkaSourceProcessor implements TrackingRequestProcessor {
 			flushBuffer(true);
 		}
 		logger.info("[WT1] Send to topic " + this.kafkaTopic + " to Kafka");
-		this.producer.send(new ProducerRecord<String, String>(this.kafkaTopic, req.visitorId,new String(data)));
+		this.producer.send(new ProducerRecord<String, String>(this.kafkaTopic, req.visitorId, new String(data)));
 		events.add(new String(data));
         // Event event = EventBuilder.withBody(data);
 

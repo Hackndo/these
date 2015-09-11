@@ -1,0 +1,4 @@
+[2015-09-10 16:02:22,624] INFO Rolled new log segment for 'dataiku-topic-0' in 1 ms. (kafka.log.Log)
+[2015-09-10 16:02:22,624] INFO Scheduling log segment 258 for log dataiku-topic-0 for deletion. (kafka.log.Log)
+[2015-09-10 16:03:22,638] INFO Deleting segment 258 from log dataiku-topic-0. (kafka.log.Log)
+[2015-09-10 16:03:22,653] INFO Deleting index /tmp/kafka-logs-1/dataiku-topic-0/00000000000000000258.index.deleted (kafka.log.OffsetIndex)

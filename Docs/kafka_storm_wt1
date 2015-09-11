@@ -1,4 +1,21 @@
+# 1. Start Redis
+# 2. Start Zookeeper
+# 3. Start Kafka Brokers
+# 4. Start Tomcat (with WT1 inside)
+# 5. Start Storm
+# 6. Start dashboard.py
+# http://localhost:5000/users
 
+#
+# Nombre users
+# Nombre de users par composant du studio > session_params > current_state
+# Where are they ?
+#     -> Géographique (Une facon de le faire, cest essayer de faire un bolt qui exectue un script shaker)
+#     -> In the studio (on maintient pour chaque user son dernier etat. 10 users on utilisé le shaker dans la dernier heure. Mais 3 sont actuellement sur le shaker. Donc quand un user change d'état, il faut le noter.)
+
+#########################################################
+#                       LAUNCH                          #
+#########################################################
 
 # Redis
 /home/romain/Documents/Redis/redis-3.0.3/src/redis-server &
@@ -52,3 +69,18 @@ cd /home/romain/Documents/StormKafka/kafka-spout && mvn clean && mvn package
 
 # Topics & partitions in /tmp
 tree /tmp/kafka-logs-{1,2,3}
+
+
+# /!\ Pointeur de lecture - High Watermark
+# Doc de kafka : Stocker le pointeur d'avancement dans une file kafka (plutot que dans zookeeper pas top en ecriture)
+# Sinon dans Redis quand je commit ma data pour être sur que si ça s'arrête le pointeur de lecture vient avec la data
+# Pointeur kafka : Combien de latence de save ? Si 30 sec, je risque de refaire 30 sec de traitement
+
+# The definition of, how far behind is too far, is controlled by the replica.lag.max.messages
+
+# 267525 !! 16041 10'56165683 533 184901 537267 23927756472 174 116524500 1756777 12467 1706017464787123, 12467 681121427... 2542 389 113797 540338 23668756658 101 479925301 5748 678862939133396 385 739645106, 55459 101 21260539301, 149 537267 409031 13812 149 140102958 1516965 1551238451 427609 17700496851.
+
+# 11010110010000010100110011
+# 101000011101101010000001011011
+# 10 <=> 00001010
+# c <=> 01000011
